@@ -1,22 +1,25 @@
-import { useState } from "react";
+import { Component } from "react";
 
-function Home() {
-  let [count, setCount] = useState(100);
+class Home extends Component {
+  constructor() {
+    super();
+    this.state = { count: 100 };
+  }
 
-  let incCount = () => {
-    // console.log("clicked");
-    // count++;
-    setCount(count + 1);
-    // console.log(count);
+  incCount = () => {
+    this.setState({ count: this.state.count + 1 });
   };
-  return (
-    <div>
-      Home {count}
-      <button className="btn" onClick={incCount}>
-        INC
-      </button>
-    </div>
-  );
+
+  render() {
+    return (
+      <div>
+        Home {this.state.count}
+        <button className="btn" onClick={this.incCount}>
+          INC
+        </button>
+      </div>
+    );
+  }
 }
 
 export default Home;
