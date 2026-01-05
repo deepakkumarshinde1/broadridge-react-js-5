@@ -1,5 +1,5 @@
 import { Fragment } from "react";
-import "./App.css";
+
 import About from "./components/About";
 import Home from "./components/Home";
 import Login from "./components/Login";
@@ -9,12 +9,12 @@ import Project from "./components/Project";
 function App() {
   return (
     <>
-      <Home />
-      <Home />
-      <About />
+      {/* <Home /> */}
+      {/* <Home /> */}
+      {/* <About /> */}
       <Login />
-      <Project />
-      <Home />
+      {/* <Project />
+      <Home /> */}
     </>
   );
 }
