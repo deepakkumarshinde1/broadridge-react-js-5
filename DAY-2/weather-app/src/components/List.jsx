@@ -10,37 +10,20 @@ class List extends Component {
         {/* <!-- Weather Cards --> */}
         <div className="card-container">
           {/* <!-- Card --> */}
-          <div className="weather-card">
-            <h2>Nashik</h2>
-            <p className="country">[ IN ]</p>
-            <p className="temp">28°C</p>
 
-            <button className="delete-btn">
-              <i className="fa fa-trash"></i>
-            </button>
-          </div>
+          {this.props.cites.map((city) => {
+            return (
+              <div className="weather-card">
+                <h2>{city.name}</h2>
+                <p className="country">[ {city.sys.country} ]</p>
+                <p className="temp">{city.main.temp}°C</p>
 
-          {/* <!-- Card --> */}
-          <div className="weather-card">
-            <h2>Mumbai</h2>
-            <p className="country">[ IN ]</p>
-            <p className="temp">28°C</p>
-
-            <button className="delete-btn">
-              <i className="fa fa-trash"></i>
-            </button>
-          </div>
-
-          {/* <!-- Card --> */}
-          <div className="weather-card">
-            <h2>Pune</h2>
-            <p className="country">[ IN ]</p>
-            <p className="temp">28°C</p>
-
-            <button className="delete-btn">
-              <i className="fa fa-trash"></i>
-            </button>
-          </div>
+                <button className="delete-btn">
+                  <i className="fa fa-trash"></i>
+                </button>
+              </div>
+            );
+          })}
         </div>
       </>
     );
