@@ -5,10 +5,11 @@ import List from "./components/List";
 
 function App() {
   let [cites, setCites] = useState([]);
+
   return (
     <>
       <Input setCites={setCites} cites={cites} />
-      <List cites={cites} />
+      <List cites={cites} setCites={setCites} />
     </>
   );
 }
