@@ -1,42 +1,129 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+/* ===============================
+   SEARCH BAR
+================================ */
+.search-container {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 40px;
+}
+
+.search-input {
+  width: 280px;
+  padding: 12px 14px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+  transition: border 0.3s, box-shadow 0.3s;
+}
+
+.search-input:focus {
+  border-color: #1976d2;
+  box-shadow: 0 0 0 2px rgba(25, 118, 210, 0.2);
+}
+
+/* Search Button */
+.search-btn {
+  background-color: #1976d2; /* Material Blue */
+  color: #fff;
+  border: none;
+  padding: 12px 18px;
+  font-size: 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: background 0.3s, transform 0.15s, box-shadow 0.15s;
+}
+
+.search-btn:hover {
+  background-color: #1565c0;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.search-btn:active {
+  transform: scale(0.96);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* ===============================
+   CARD CONTAINER
+================================ */
+.card-container {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+/* ===============================
+   WEATHER CARD
+================================ */
+.weather-card {
+  background-color: #ffffff;
+  width: 220px;
+  height: 260px;
+  border-radius: 6px;
+  padding: 20px;
   text-align: center;
+  position: relative;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.weather-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.18);
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* City Name */
+.weather-card h2 {
+  color: #212121;
+  margin-bottom: 6px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+/* Country */
+.country {
+  color: #757575;
+  font-size: 14px;
+  margin-bottom: 20px;
 }
 
-.card {
-  padding: 2em;
+/* Temperature */
+.temp {
+  font-size: 36px;
+  font-weight: bold;
+  color: #ef6c00; /* Material Orange */
 }
 
-.read-the-docs {
-  color: #888;
+/* ===============================
+   DELETE BUTTON
+================================ */
+.delete-btn {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: none;
+  background-color: #e53935; /* Material Red */
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s, transform 0.15s, box-shadow 0.15s;
+}
+
+.delete-btn:hover {
+  background-color: #c62828;
+  box-shadow: 0 6px 14px rgba(229, 57, 53, 0.4);
+}
+
+.delete-btn:active {
+  transform: scale(0.9);
 }
