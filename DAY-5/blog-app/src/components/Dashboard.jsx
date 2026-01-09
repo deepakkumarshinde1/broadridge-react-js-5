@@ -1,7 +1,9 @@
 import React from "react";
 import "../css/Dashboard.css";
+import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
+  let navigate = useNavigate();
   return (
     <div className="dashboard-page">
       {/* Header */}
@@ -13,7 +15,7 @@ const Dashboard = () => {
           <p>Manage your blogs and content</p>
         </div>
 
-        <button className="btn-create">
+        <button className="btn-create" onClick={() => navigate("/create-blog")}>
           <i className="fa fa-plus"></i> Create Blog
         </button>
       </div>
