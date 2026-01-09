@@ -1,0 +1,161 @@
+/* Base */
+
+.app {
+  min-height: 100vh;
+}
+
+/* Header */
+.header {
+  background-color: #67e8f9; /* cyan-300 */
+  padding: 16px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  box-shadow: 0 5px 10px 0 #a6a6a6d4;
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: 600;
+  color: #0f172a; /* slate-900 */
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav {
+  display: flex;
+  gap: 24px;
+}
+
+.nav a {
+  text-decoration: none;
+  color: #0f172a;
+  font-weight: 500;
+}
+
+.nav a i {
+  margin-right: 6px;
+}
+
+/* Auth Buttons */
+.auth {
+  display: flex;
+  gap: 12px;
+}
+
+.btn-outline {
+  background: transparent;
+  border: 1px solid #0f172a;
+  padding: 8px 14px;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.btn-primary {
+  background-color: #0ea5e9; /* sky-500 */
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+/* Container */
+.container {
+  max-width: 1100px;
+  margin: 32px auto;
+  padding: 0 16px;
+}
+
+/* Blog Card */
+.blog-card {
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  cursor: pointer;
+}
+
+/* Image Placeholder */
+.blog-image {
+  width: 120px;
+  height: 120px;
+  background-color: #e5e7eb; /* gray-200 */
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  color: #6b7280; /* gray-500 */
+}
+
+/* Content */
+.blog-content {
+  flex: 1;
+}
+
+.blog-title {
+  font-size: 20px;
+  color: #020617; /* slate-950 */
+  margin-bottom: 6px;
+}
+
+.blog-desc {
+  color: #475569; /* slate-600 */
+  margin-bottom: 10px;
+}
+
+.blog-meta {
+  display: flex;
+  gap: 16px;
+  font-size: 14px;
+  color: #64748b; /* slate-500 */
+}
+
+.blog-meta i {
+  margin-right: 4px;
+}
+
+/* Action */
+.blog-action {
+  display: flex;
+  align-items: flex-end;
+}
+
+.like-btn {
+  background-color: #ef4444; /* red-500 */
+  border: none;
+  color: white;
+  padding: 10px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.like-btn i {
+  margin-right: 6px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .blog-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .blog-action {
+    align-self: flex-end;
+  }
+}
