@@ -6,6 +6,7 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 import Header from "./components/Header";
 import { Route, Routes } from "react-router-dom";
+import MyBlog from "./components/MyBlog";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <div className="app">
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/my-blog" element={<MyBlog />} />
           <Route path="/blog-details" element={<BlogDetails />} />
           <Route path="/create-blog" element={<CreateBlog />} />
           <Route path="/login" element={<Login />} />

@@ -13,12 +13,12 @@ function Header() {
         <NavLink to="/">
           <i className="fa fa-home"></i> Home
         </NavLink>
-        {/* <a href="#">
-          <i className="fa fa-tags"></i> Categories
-        </a>
-        <a href="#">
-          <i className="fa fa-info-circle"></i> About
-        </a> */}
+        <NavLink to="/dashboard">
+          <i className="fa fa-info-circle"></i> Dashboard
+        </NavLink>
+        <NavLink to="/my-blog">
+          <i className="fa  fa-tags"></i> My Blogs
+        </NavLink>
       </nav>
 
       <div className="auth">
@@ -30,6 +30,14 @@ function Header() {
           onClick={() => navigate("/create-account")}
         >
           Create Account
+        </button>
+
+        <button
+          className="btn-danger"
+          onClick={() => navigate("/create-account")}
+        >
+          <span className="fa fa-sign-out"></span>
+          Logout
         </button>
       </div>
     </header>
