@@ -7,6 +7,7 @@ import Register from "./components/Register";
 import Header from "./components/Header";
 import { Route, Routes } from "react-router-dom";
 import MyBlog from "./components/MyBlog";
+import ProtectedRouting from "./components/ProtectedRouting";
 
 function App() {
   return (
@@ -16,12 +17,20 @@ function App() {
       <div className="app">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/my-blog" element={<MyBlog />} />
           <Route path="/blog-details" element={<BlogDetails />} />
-          <Route path="/create-blog" element={<CreateBlog />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/create-account" element={<Register />} />
-          <Route path="/dashboard" element={<Dashboard />} />
+
+          {/* after login type=1 */}
+          <Route path="" element={<ProtectedRouting type={1} />}>
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/my-blog" element={<MyBlog />} />
+            <Route path="/create-blog" element={<CreateBlog />} />
+          </Route>
+
+          {/* after logout type=0*/}
+          <Route path="" element={<ProtectedRouting type={0} />}>
+            <Route path="/login" element={<Login />} />
+            <Route path="/create-account" element={<Register />} />
+          </Route>
         </Routes>
       </div>
     </>

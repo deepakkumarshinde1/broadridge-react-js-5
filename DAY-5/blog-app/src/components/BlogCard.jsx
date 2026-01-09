@@ -1,31 +1,27 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-function BlogCard({ item, bgColor }) {
+function BlogCard({ blog, bgColor }) {
   let navigate = useNavigate();
   return (
     <div
       className="blog-card"
-      key={item}
       onClick={() => navigate("/blog-details")}
       style={{
         border: bgColor ? "3px dotted black" : "3px solid black",
       }}
     >
       <div className="blog-image">
-        <i className="fa fa-image"></i>
+        <img src={blog.image} alt={blog.title} />
       </div>
 
       <div className="blog-content">
-        <h2 className="blog-title">Blog Title {item}</h2>
-        <p className="blog-desc">
-          This is a short description of the blog post. It gives users a quick
-          idea about the content.
-        </p>
+        <h2 className="blog-title">{blog.title}</h2>
+        <p className="blog-desc">{blog.shortDescription}</p>
 
         <div className="blog-meta">
           <span>
-            <i className="fa fa-user"></i> Admin
+            <i className="fa fa-user"></i> {blog.author.fullName.split(" ")[0]}
           </span>
           <span>
             <i className="fa fa-calendar"></i> Jan 2026

@@ -1,7 +1,41 @@
-import React from "react";
+import React, { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
+
 import "../css/CreateBlog.css";
+import { useAuthContext } from "../context/auth.context";
+import { useNavigate } from "react-router-dom";
+import { useBlogContext } from "../context/blog.context";
 
 const CreateBlog = () => {
+  let navigate = useNavigate();
+  let { authUser } = useAuthContext();
+  let { toggle, setToggle } = useBlogContext();
+  let [newBlog, setNewBlog] = useState({
+    title: "",
+    image: "",
+    category: "",
+    shortDescription: "",
+    description: "",
+  });
+
+  let inputChange = (event) => {
+    let { name, value } = event.target;
+    setNewBlog({ ...newBlog, [name]: value });
+  };
+
+  let saveBlog = (event) => {
+    event.preventDefault();
+
+    let blogs = localStorage.getItem("blogs");
+    blogs = blogs ? JSON.parse(blogs) : [];
+
+    blogs.push({ ...newBlog, id: uuidv4(), author: { ...authUser } });
+
+    localStorage.setItem("blogs", JSON.stringify(blogs));
+    setToggle(!toggle);
+    alert("Blog created successfully !!!");
+    navigate("/dashboard");
+  };
   return (
     <div className="create-blog-page">
       {/* Page Header */}
@@ -13,13 +47,19 @@ const CreateBlog = () => {
       </div>
 
       {/* Form */}
-      <form className="blog-form">
+      <form className="blog-form" onSubmit={saveBlog}>
         {/* Title */}
         <div className="form-group">
           <label>
             <i className="fa fa-header"></i> Blog Title
           </label>
-          <input type="text" placeholder="Enter blog title" />
+          <input
+            value={newBlog.title}
+            name="title"
+            onChange={inputChange}
+            type="text"
+            placeholder="Enter blog title"
+          />
         </div>
 
         {/* Category */}
@@ -27,7 +67,11 @@ const CreateBlog = () => {
           <label>
             <i className="fa fa-tags"></i> Category
           </label>
-          <select>
+          <select
+            value={newBlog.category}
+            name="category"
+            onChange={inputChange}
+          >
             <option>Select category</option>
             <option>Technology</option>
             <option>Programming</option>
@@ -41,7 +85,13 @@ const CreateBlog = () => {
           <label>
             <i className="fa fa-image"></i> Cover Image URL
           </label>
-          <input type="text" placeholder="https://example.com/image.jpg" />
+          <input
+            type="text"
+            value={newBlog.image}
+            name="image"
+            placeholder="https://example.com/image.jpg"
+            onChange={inputChange}
+          />
         </div>
 
         {/* Description */}
@@ -50,8 +100,11 @@ const CreateBlog = () => {
             <i className="fa fa-align-left"></i> Short Description
           </label>
           <textarea
+            value={newBlog.shortDescription}
             placeholder="Write a short description..."
             className="short-desc"
+            name="shortDescription"
+            onChange={inputChange}
           ></textarea>
         </div>
 
@@ -63,14 +116,17 @@ const CreateBlog = () => {
           <textarea
             placeholder="Write your blog content here..."
             className="blog-content"
+            value={newBlog.description}
+            name="description"
+            onChange={inputChange}
           ></textarea>
         </div>
 
         {/* Actions */}
         <div className="form-actions">
-          <button type="button" className="btn-draft">
+          {/* <button type="button" className="btn-draft">
             <i className="fa fa-save"></i> Save Draft
-          </button>
+          </button> */}
 
           <button type="submit" className="btn-publish">
             <i className="fa fa-paper-plane"></i> Publish

@@ -29,7 +29,11 @@ const Login = () => {
     );
     if (isUserExists) {
       alert("Login successfully");
-      return false;
+      delete isUserExists.password;
+      delete isUserExists.confirmPassword;
+      delete isUserExists.iAgree;
+      localStorage.setItem("auth", JSON.stringify(isUserExists));
+      location.replace("/dashboard");
     } else {
       alert("Wrong username or password.");
     }

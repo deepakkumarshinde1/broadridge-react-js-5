@@ -1,9 +1,11 @@
 import React from "react";
 import "../css/Dashboard.css";
 import { useNavigate } from "react-router-dom";
+import { useBlogContext } from "../context/blog.context";
 
 const Dashboard = () => {
   let navigate = useNavigate();
+  let { userBlogs } = useBlogContext();
   return (
     <div className="dashboard-page">
       {/* Header */}
@@ -23,33 +25,37 @@ const Dashboard = () => {
       {/* Blog List */}
       <div className="blog-table">
         {/* Row */}
-        <div className="blog-row">
-          <div className="blog-info">
-            <h3>Understanding React Hooks</h3>
-            <span className="blog-date">
-              <i className="fa fa-calendar"></i> Jan 10, 2026
-            </span>
-          </div>
+        {userBlogs.map((blog) => {
+          return (
+            <div className="blog-row" key={blog.id}>
+              <div className="blog-info">
+                <h3>{blog.title}</h3>
+                <span className="blog-date">
+                  <i className="fa fa-calendar"></i> Jan 10, 2026
+                </span>
+              </div>
 
-          <span className="status published">
-            <i className="fa fa-check-circle"></i> Published
-          </span>
+              <span className="status published">
+                <i className="fa fa-check-circle"></i> Published
+              </span>
 
-          <div className="actions">
-            <button className="btn edit">
-              <i className="fa fa-pencil"></i>
-            </button>
-            <button className="btn unpublish">
-              <i className="fa fa-eye-slash"></i>
-            </button>
-            <button className="btn delete">
-              <i className="fa fa-trash"></i>
-            </button>
-          </div>
-        </div>
+              <div className="actions">
+                <button className="btn edit">
+                  <i className="fa fa-pencil"></i>
+                </button>
+                <button className="btn unpublish">
+                  <i className="fa fa-eye-slash"></i>
+                </button>
+                <button className="btn delete">
+                  <i className="fa fa-trash"></i>
+                </button>
+              </div>
+            </div>
+          );
+        })}
 
         {/* Row */}
-        <div className="blog-row">
+        {/* <div className="blog-row">
           <div className="blog-info">
             <h3>CSS Flexbox Complete Guide</h3>
             <span className="blog-date">
@@ -72,10 +78,10 @@ const Dashboard = () => {
               <i className="fa fa-trash"></i>
             </button>
           </div>
-        </div>
+        </div> */}
 
         {/* Row */}
-        <div className="blog-row">
+        {/* <div className="blog-row">
           <div className="blog-info">
             <h3>JavaScript Performance Tips</h3>
             <span className="blog-date">
@@ -98,7 +104,7 @@ const Dashboard = () => {
               <i className="fa fa-trash"></i>
             </button>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );
