@@ -1,38 +1,56 @@
-import { useCallback, useMemo, useState } from "react";
+import { useDeferredValue, useState, useTransition } from "react";
 import "./App.css";
-import Header from "./components/Header";
-import Button2 from "./components/Button2";
-import Text2 from "./components/Text2";
+import { users } from "./components/data";
 function App() {
-  let [counter, setCounter] = useState(0);
-  let [counter2, setCounter2] = useState(10);
-  let inc = () => {
-    setCounter(counter + 1);
+  let [value, setValue] = useState("");
+
+  let differValue = useDeferredValue(value);
+
+  let [list, setList] = useState([]);
+  let [loading, makeTransition] = useTransition();
+
+  // let onChangeHandler = (event) => {
+  //   setValue(event.target.value);
+  // };
+
+  //let list = users.filter((user) => user.last_name.includes(differValue));
+
+  let onChangeHandler = (event) => {
+    setValue(event.target.value);
+    makeTransition(() => {
+      let newList = users.filter((user) => user.last_name.includes(value));
+      setList(newList);
+    });
   };
-
-  let inc2 = useCallback(() => {
-    setCounter2(counter2 + 1);
-  }, [counter2]);
-
-  let result = useMemo(() => {
-    return counter2 % 5 === 0
-      ? "Yes its divisible by 5"
-      : "No, its not divisible by 5";
-  }, [counter2]);
-
   return (
-    <div>
-      <Header />
-      <h1>
-        <span>{counter2}</span>
-        <Text2 result={result} />
-        <Button2 inc2={inc2} />
-      </h1>
+    <>
+      <input
+        type="text"
+        value={value}
+        onChange={onChangeHandler}
+        placeholder="search box"
+      />
 
-      <h1>
-        {counter} <button onClick={inc}>Inc</button>
-      </h1>
-    </div>
+      <ul>
+        {list.map((user, index) => (
+          <li key={index}>
+            {user.first_name} {user.last_name}
+          </li>
+        ))}
+      </ul>
+
+      {loading ? (
+        <p>Loading...</p>
+      ) : (
+        <ul>
+          {list.map((user, index) => (
+            <li key={index}>
+              {user.first_name} {user.last_name}
+            </li>
+          ))}
+        </ul>
+      )}
+    </>
   );
 }
 
