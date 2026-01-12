@@ -22,6 +22,7 @@ function App() {
       setList(newList);
     });
   };
+
   return (
     <>
       <input
