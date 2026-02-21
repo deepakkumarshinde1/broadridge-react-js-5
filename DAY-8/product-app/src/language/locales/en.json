@@ -1,0 +1,5 @@
+{
+  "welcome": "Welcome, {{username}}",
+  "login": "Login",
+  "logout": "Logout"
+}

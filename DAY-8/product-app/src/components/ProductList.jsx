@@ -38,7 +38,7 @@ function ProductList() {
                     productName: product.title,
                     productId: product._id,
                     quantity: 1,
-                  })
+                  }),
                 );
               }}
             >

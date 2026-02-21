@@ -3,8 +3,14 @@ import "../assets/css/Header.css";
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { removeCookies } from "../config/authCookies";
+import { useTranslation } from "react-i18next";
 
 function Header() {
+  const { t, i18n } = useTranslation();
+
+  const changeLanguage = (event) => {
+    i18n.changeLanguage(event.target.value);
+  };
   let { user } = useSelector((state) => state.userReducer);
   return (
     <header className="header">
@@ -26,10 +32,14 @@ function Header() {
       </nav>
 
       <div className="auth-links">
+        <select onChange={changeLanguage} value={i18n.language}>
+          <option value="en">English</option>
+          <option value="hi">Hindi</option>
+        </select>
         {!user ? (
           <>
             <NavLink to="/login">
-              <i className="fa fa-sign-in"></i> Login
+              <i className="fa fa-sign-in"></i> {t("login")}
             </NavLink>
             <NavLink to="/register">
               <i className="fa fa-user-plus"></i> Register
@@ -37,14 +47,15 @@ function Header() {
           </>
         ) : (
           <>
-            <span>Welcome {user.username}</span>&nbsp;
+            <span>{t("welcome", { username: user.username })}</span>
+            &nbsp;
             <button
               onClick={() => {
                 removeCookies("accessToken");
                 window.location.replace("/login");
               }}
             >
-              Logout
+              {t("logout")}
             </button>
           </>
         )}
