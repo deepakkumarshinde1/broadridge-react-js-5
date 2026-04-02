@@ -35,6 +35,7 @@ function Header() {
         <select onChange={changeLanguage} value={i18n.language}>
           <option value="en">English</option>
           <option value="hi">Hindi</option>
+          <option value="tm">Tamil</option>
         </select>
         {!user ? (
           <>

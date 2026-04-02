@@ -11,6 +11,7 @@ const ProductList = lazy(() => import("./components/ProductList"));
 const Cart = lazy(() => import("./components/Cart"));
 const Login = lazy(() => import("./components/Login"));
 const Register = lazy(() => import("./components/Register"));
+import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
   let dispatch = useDispatch();
@@ -29,9 +30,13 @@ function App() {
           <Route path="/" element={<Navigate to="/products" />} />
           <Route path="/products" element={<ProductList />} />
           <Route path="/products/:id" element={<ProductDetails />} />
-          <Route path="/cart" element={<Cart cartItems={[]} />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
+          <Route path="" element={<ProtectedRoute type={1} />}>
+            <Route path="/cart" element={<Cart cartItems={[]} />} />
+          </Route>
+          <Route path="" element={<ProtectedRoute type={0} />}>
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+          </Route>
         </Routes>
       </Suspense>
     </>

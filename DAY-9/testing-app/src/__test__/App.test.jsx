@@ -21,3 +21,5 @@ test("check menu items count", () => {
   const elements = screen.getAllByTestId("menu-item");
   expect(elements.length).toBe(4);
 });
+
+test("check menu items text", () => {});

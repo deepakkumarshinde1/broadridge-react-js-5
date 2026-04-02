@@ -1,0 +1,5 @@
+{
+  "welcome": "Welcome, {{username}}",
+  "login": "புகுபதிகை",
+  "logout": "Logout"
+}

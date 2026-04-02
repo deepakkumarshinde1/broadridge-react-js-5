@@ -22,6 +22,6 @@ test("Api call on page load", async () => {
     ],
   });
   render(<Blog />);
-  const element = await screen.findByTestId("user-list");
-  expect(element.childNodes.length).toBe(3);
+  const element = await screen.findByTestId("user-list"); // ul
+  expect(element.childNodes.length).toBe(3); // [li,li,li].length = 3
 });
