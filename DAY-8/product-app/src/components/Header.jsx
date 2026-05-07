@@ -36,6 +36,7 @@ function Header() {
           <option value="en">English</option>
           <option value="hi">Hindi</option>
           <option value="tm">Tamil</option>
+          <option value="tgl">Telugu</option>
         </select>
         {!user ? (
           <>

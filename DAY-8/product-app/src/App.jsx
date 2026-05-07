@@ -11,7 +11,7 @@ const ProductList = lazy(() => import("./components/ProductList"));
 const Cart = lazy(() => import("./components/Cart"));
 const Login = lazy(() => import("./components/Login"));
 const Register = lazy(() => import("./components/Register"));
-import ProtectedRoute from "./components/ProtectedRoute";
+const ProtectedRoute = lazy(() => import("./components/ProtectedRoute"));
 
 function App() {
   let dispatch = useDispatch();

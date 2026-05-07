@@ -11,11 +11,12 @@ describe("Home Comp Counter App", () => {
     expect(counterButton).toBeInTheDocument();
 
     // when we click on button counter element bu be updated by one
-    fireEvent.click(counterButton);
-    fireEvent.click(counterButton);
-    fireEvent.click(counterButton);
+    fireEvent.click(counterButton); //1
+    fireEvent.click(counterButton); //2
+    fireEvent.click(counterButton); //3
+    fireEvent.click(counterButton); //4
     await waitFor(() => {
-      expect(counterElement.innerHTML).toBe("3");
+      expect(counterElement.innerHTML).toBe("4");
     });
   });
 
